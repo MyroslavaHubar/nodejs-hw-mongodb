@@ -1,10 +1,8 @@
-// package.json
-
 {
   "name": "nodejs-basics",
   "version": "1.0.0",
   "description": "",
-  "type":"module",
+  "type": "module",
   "main": "src/index.js",
   "scripts": {
     "lint": "eslint src/**/*.js",
@@ -12,7 +10,7 @@
     "dev": "nodemon src/index.js"
   },
   "keywords": [],
-  "author": "Myroslava Hubar <miroslavagubar777@gmail.com>",
+  "author": "Alexander Repeta <a.repeta@goit.global>",
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.2.0",
