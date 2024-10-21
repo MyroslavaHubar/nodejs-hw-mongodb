@@ -1,7 +1,10 @@
 import { Router } from 'express';
 import {
+  createContactController,
+  deleteContactController,
   getContactsByIdController,
   getContactsController,
+  patchContactController,
 } from '../controllers/contacts.js';
 
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
@@ -16,10 +19,10 @@ router.get('/', (req, res) => {
   res.json({ message: 'Server is enable' });
 });
 
-router.use('*', (req, res, next) => {
-  res.status(404).json({
-    message: 'Not found',
-  });
-});
+router.post('/students', ctrlWrapper(createContactController));
+
+router.patch('/students/:studentId', ctrlWrapper(patchContactController));
+
+router.delete('/students/:studentId', ctrlWrapper(deleteContactController));
 
 export default router;
