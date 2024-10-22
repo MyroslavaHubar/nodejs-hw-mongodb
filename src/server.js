@@ -13,11 +13,10 @@ const PORT = Number(process.env.PORT);
 export const setupServer = () => {
   const app = express();
 
-  app.use(express.json());
-
   app.use(
     express.json({
       type: ['application/json', 'application/vnd.api+json'],
+      limit: '100kb',
     }),
   );
 
