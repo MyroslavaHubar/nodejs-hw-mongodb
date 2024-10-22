@@ -6,9 +6,14 @@ import {
   updateContact,
 } from '../services/contacts.js';
 import createHttpError from 'http-errors';
+import { parsePaginationParams } from '../utils/parsePaginationParams.js';
 
 export const getContactsController = async (req, res) => {
-  const contacts = await getAllContacts();
+  const { page, perPage } = parsePaginationParams(req.query);
+  const contacts = await getAllContacts({
+    page,
+    perPage,
+  });
   res.status(200).json({
     status: 200,
     message: 'Successfully found contacts!',
@@ -71,8 +76,7 @@ export const deleteContactController = async (req, res, next) => {
   const contact = await deleteContact(contactId);
 
   if (!contact) {
-    next(createHttpError(404, 'Contact not found'));
-    return;
+    throw createHttpError(404, 'Contact not found');
   }
 
   res.status(204).send();
