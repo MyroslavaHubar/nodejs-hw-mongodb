@@ -8,7 +8,7 @@ const parseContactType = (contactType) => {
 };
 
 const parseContactIsFavourite = (value) => {
-  if (value === 'true' || value === 'false') {
+  if (typeof value === 'boolean') {
     return value;
   }
   return undefined;
