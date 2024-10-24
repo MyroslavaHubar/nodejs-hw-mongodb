@@ -19,7 +19,11 @@ const router = Router();
 
 router.get('/contacts', ctrlWrapper(getContactsController));
 
-router.get('/contacts/:contactId', ctrlWrapper(getContactsByIdController));
+router.get(
+  '/contacts/:contactId',
+  isValidId,
+  ctrlWrapper(getContactsByIdController),
+);
 
 router.get('/', (req, res) => {
   res.json({ message: 'Server is enable' });
