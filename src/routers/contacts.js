@@ -19,11 +19,7 @@ const router = Router();
 
 router.get('/contacts', ctrlWrapper(getContactsController));
 
-router.get(
-  '/contacts/:contactId',
-  isValidId,
-  ctrlWrapper(getContactsByIdController),
-);
+router.get('/:contactId', isValidId, ctrlWrapper(getContactsByIdController));
 
 router.get('/', (req, res) => {
   res.json({ message: 'Server is enable' });
@@ -36,16 +32,12 @@ router.post(
 );
 
 router.patch(
-  '/contacts/:contactId',
+  '/:contactId',
   validateBody(createContactSchemaForPatch),
   isValidId,
   ctrlWrapper(patchContactController),
 );
 
-router.delete(
-  '/contacts/:contactId',
-  isValidId,
-  ctrlWrapper(deleteContactController),
-);
+router.delete('/:contactId', isValidId, ctrlWrapper(deleteContactController));
 
 export default router;
