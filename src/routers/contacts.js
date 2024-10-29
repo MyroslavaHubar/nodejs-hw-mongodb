@@ -14,30 +14,41 @@ import {
 } from '../validation/contacts.js';
 import { validateBody } from '../middlewares/validateBody.js';
 import { isValidId } from '../middlewares/isValidId.js';
+import { authenticate } from '../middlewares/authenticate.js';
 
-const router = Router();
+const contactsRouter = Router();
 
-router.get('/contacts', ctrlWrapper(getContactsController));
+contactsRouter.use(authenticate);
 
-router.get('/:contactId', isValidId, ctrlWrapper(getContactsByIdController));
+contactsRouter.get('/contacts', ctrlWrapper(getContactsController));
 
-router.get('/', (req, res) => {
+contactsRouter.get(
+  '/:contactId',
+  isValidId,
+  ctrlWrapper(getContactsByIdController),
+);
+
+contactsRouter.get('/', (req, res) => {
   res.json({ message: 'Server is enable' });
 });
 
-router.post(
+contactsRouter.post(
   '/contacts',
   validateBody(createContactSchema),
   ctrlWrapper(createContactController),
 );
 
-router.patch(
+contactsRouter.patch(
   '/:contactId',
   validateBody(createContactSchemaForPatch),
   isValidId,
   ctrlWrapper(patchContactController),
 );
 
-router.delete('/:contactId', isValidId, ctrlWrapper(deleteContactController));
+contactsRouter.delete(
+  '/:contactId',
+  isValidId,
+  ctrlWrapper(deleteContactController),
+);
 
-export default router;
+export default contactsRouter;

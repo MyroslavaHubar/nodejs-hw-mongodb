@@ -31,13 +31,14 @@ export const setupServer = () => {
   );
 
   app.use(cors());
-  app.use(cookieParser());
 
-  app.use(router);
+  app.use(cookieParser());
 
   app.get('/', (req, res) => {
     res.json({ message: 'Server is enable' });
   });
+
+  app.use(router);
 
   app.use('*', notFoundHandler);
   app.use(errorHandler);
