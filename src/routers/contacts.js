@@ -20,7 +20,7 @@ const contactsRouter = Router();
 
 contactsRouter.use(authenticate);
 
-contactsRouter.get('/contacts', ctrlWrapper(getContactsController));
+contactsRouter.get('/', ctrlWrapper(getContactsController));
 
 contactsRouter.get(
   '/:contactId',
@@ -28,12 +28,8 @@ contactsRouter.get(
   ctrlWrapper(getContactsByIdController),
 );
 
-contactsRouter.get('/', (req, res) => {
-  res.json({ message: 'Server is enable' });
-});
-
 contactsRouter.post(
-  '/contacts',
+  '/',
   validateBody(createContactSchema),
   ctrlWrapper(createContactController),
 );
