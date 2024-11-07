@@ -15,17 +15,13 @@ export const createContactSchema = Joi.object({
   email: Joi.string().min(3).max(20).email().messages({
     'string.min': 'Email should have at least {#limit} characters',
     'string.max': 'Email should have at most {#limit} characters',
-    'any.required': 'Email is required',
   }),
   isFavourite: Joi.boolean(),
-  contactType: Joi.number()
+  contactType: Joi.string()
     .min(3)
     .max(20)
     .required()
-    .valid('work', 'home', 'personal')
-    .messages({
-      'any.required': 'Email is required',
-    }),
+    .valid('work', 'home', 'personal'),
 });
 
 export const createContactSchemaForPatch = Joi.object({
@@ -42,5 +38,5 @@ export const createContactSchemaForPatch = Joi.object({
     'string.max': 'Email should have at most {#limit} characters',
   }),
   isFavourite: Joi.boolean(),
-  contactType: Joi.number().min(3).max(20).valid('work', 'home', 'personal'),
+  contactType: Joi.string().min(3).max(20).valid('work', 'home', 'personal'),
 });

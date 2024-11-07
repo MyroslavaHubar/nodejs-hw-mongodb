@@ -31,16 +31,16 @@ contactsRouter.get(
 
 contactsRouter.post(
   '/',
-  validateBody(createContactSchema),
   upload.single('photo'),
+  validateBody(createContactSchema),
   ctrlWrapper(createContactController),
 );
 
 contactsRouter.patch(
   '/:contactId',
+  upload.single('photo'),
   validateBody(createContactSchemaForPatch),
   isValidId,
-  upload.single('photo'),
   ctrlWrapper(patchContactController),
 );
 
