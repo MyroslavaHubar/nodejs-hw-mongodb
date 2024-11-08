@@ -30,7 +30,7 @@ properties:
     type: boolean
     example: true
   contactType:
-    description: "Contact's contact type"
+    description: "Contact's type"
     type: string
     enum: ['work', 'home', 'personal']
     example: 'personal'
