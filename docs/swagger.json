@@ -63,7 +63,7 @@
             "name": "sortBy",
             "schema": {
               "type": "string",
-              "example": "age"
+              "example": "name"
             },
             "description": "All contact's fields can be mentioned. Default value - _id"
           },
@@ -85,14 +85,6 @@
             "schema": {
               "type": "boolean",
               "example": true
-            }
-          },
-          {
-            "in": "query",
-            "name": "maxAvgMark",
-            "schema": {
-              "type": "number",
-              "example": 10
             }
           },
           {
@@ -250,7 +242,7 @@
         },
         "responses": {
           "201": {
-            "description": "Creates a student",
+            "description": "Creates a contact",
             "content": {
               "application/json": {
                 "schema": {
@@ -267,7 +259,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Successfully created a student!"
+                      "example": "Successfully created a contact!"
                     },
                     "data": {
                       "type": "object",
@@ -523,8 +515,7 @@
           "name",
           "phoneNumber",
           "contactType",
-          "userId",
-          "photo"
+          "userId"
         ],
         "properties": {
           "_id": {
